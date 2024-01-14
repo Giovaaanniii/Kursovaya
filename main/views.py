@@ -5,7 +5,7 @@ from .models import Excursions
 from .models import Master
 from .models import Contacts
 from .models import Graduation
-
+from .forms import YourForm
 
 def home(request):
     tasks_home = Task.objects.all()
@@ -30,3 +30,15 @@ def master(request):
 def graduation(request):
     tasks_graduation = Graduation.objects.all()
     return render(request, 'main/graduation.html',{'title': 'Выпускные','tasks': tasks_graduation})
+
+
+def edit_form(request):
+    if request.method == 'POST':
+        form = YourForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save()
+            # Дополнительные действия после сохранения формы
+    else:
+        form = YourForm()
+    
+    return render(request, 'edit_form.html', {'form': form})
