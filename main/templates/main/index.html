@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="website icon" href="https://sun9-74.userapi.com/impg/aApuumD_Vwt_luo7_ZbWf_Rivv0gx_G4HSdUXA/TyQvTaxTCMY.jpg?size=252x239&quality=95&sign=d89fa55638cfe0ca507b8d40fb3526ed&type=album" type="image/png">
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+</head>
+
+
+<body>
+  <header class="page_header">
+        <div class="container-menu">
+          <nav class="menu">
+          <a href="/" class="link-samara-deti"> 
+            <img src="static\main\images\лого2.jpg" class="logo-img"/>
+          </a>
+            <ul>
+                <li><a class="page_header_menu" href="{% url 'home' %}">Главная</a></li>
+                <li><a class="page_header_menu" href="{% url 'events' %}">Мероприятия</a></li>
+                <li><a class="page_header_menu" href="{% url 'excursions' %}">Экскурсии</a></li>
+                <li><a class="page_header_menu" href="{% url 'master-classes' %}">Мастер-классы</a></li>
+                <li><a class="page_header_menu" href="{% url 'graduation' %}">Выпускные</a></li>
+                <li><a class="page_header_menu" href="{% url 'contacts' %}">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+        
+  </header>
+
+  <main class="main">
+    <divc class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+  
+  <footer class="page_footer">
+          <nav class="navigation_footer">
+            <div class="page_footer_menu">
+              <a href="tel:+79608291455" class="links_footer"> Горбунова Мария +79608291455</a>
+              <a href="tel:+79276536636" class="links_footer"> Жарова Мария +79276536636</a>
+  
+            </div>
+            
+            <a href="https://vk.com/samara_for_children" target="_blank" >
+            <img src="https://deskmed.ru/wp-content/files/photo-1-1536x1536.png" alt="Нажмите на ссылку чтобы зайти в нашу группу вк" width="70" height="70"></a>
+
+            <a href="https://invite.viber.com/?g2=AQBlPCoIsqy9SEjFA7j3HDJ9ZK1ck85LgrsPmcKPPv3PF3w1JRYgX7uv/jKgxMeG" target="_blank" >    
+            <img src="https://static.tildacdn.com/tild3234-3535-4233-a133-323031343432/viber-min.png" alt="Нажмите на ссылку чтобы зайти в наш чат в вайбере" width="73" height="71" ></a>
+
+
+            <a href="mailto:mashuny-82@mail.ru" target="_blank">
+            <img src="https://clipartcraft.com/images/email-logo-png-us-4.png" alt="Наша электронная почта" width="70" height="65"></a>
+
+          </nav>
+          
+          
+  </footer>
+</body>
+</html>

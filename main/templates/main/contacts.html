@@ -1,0 +1,30 @@
+{% extends 'main/index.html' %}
+
+{% block title %}
+Контакты
+{% endblock %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+
+<h1 class="heading">Контакты</h1>  
+    {% if tasks %}
+    {% for el in tasks %}
+    <div class="wrapper">
+      <div class="card">
+  
+        <div class="card-title">{{ el.title }}</div>
+        <img src="{% static el.image %}" class="card-img" alt="Фотография">
+        <div class="card-discription">{{ el.task }}</div>
+      </div> 
+    </div>
+    
+    {% endfor %}
+    
+    {% else %}
+      <p>Сейчас нет записей</p>
+    {% endif %}
+    
+
+{% endblock %}
+

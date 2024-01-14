@@ -1,0 +1,37 @@
+{% extends 'main/index.html' %}
+
+{% block title %}
+  {{title}}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'main/css/home.css' %}">
+
+
+<h1 class="heading">Акции</h1>  
+
+  {% if tasks %}
+  {% for el in tasks %}
+  <div class="wrapper">
+    <div class="card">
+
+      <div class="card-title">{{ el.title }}</div>
+      <img src="{% static el.image %}" class="card-img" alt="Фотография">
+      <div class="card-discription">{{ el.task }}</div>
+      <div class="card-cena">{{ el.cena }}</div>
+      <div class="btn-keeper">
+        <a class="btn open-popup" href="#">Забронировать</a>
+      </div>
+    </div> 
+  </div>
+  
+  {% endfor %}
+  
+  {% else %}
+    <p>Сейчас нет записей</p>
+  {% endif %}
+
+{% endblock %}
+
+

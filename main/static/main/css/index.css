@@ -1,0 +1,11 @@
+.page_header_menu{
+    color: white; /* белый цвет ссылки */
+transition: color 0.3s; 
+}  
+
+.page_header_menu:hover {
+color: black; /* черный цвет ссылки при наведении курсора */
+}
+.main{
+    background-color:rgb(200, 0, 0)
+}
