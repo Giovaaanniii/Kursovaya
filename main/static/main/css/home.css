@@ -156,3 +156,6 @@ nav div a{
 nav div a:hover {
     color: rgb(255, 0, 0); /* черный цвет ссылки при наведении курсора */
 }
+.edit{
+    background-color: white;
+}
