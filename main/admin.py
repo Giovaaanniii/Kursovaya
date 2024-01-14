@@ -5,7 +5,7 @@ from .models import *
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'title','short_disc', 'brief_info','image_preview')
     list_display_links = ('id', 'title')
-    search_fields = ['title']
+    search_fields = ['id, title']
     list_filter = ['id','cena']
     ordering = ['time_create' ,'time_update', 'id']
     readonly_fields = ['image_preview']

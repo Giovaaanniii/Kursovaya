@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Task
 from .models import Events
 from .models import Excursions
@@ -32,13 +32,17 @@ def graduation(request):
     return render(request, 'main/graduation.html',{'title': 'Выпускные','tasks': tasks_graduation})
 
 
-def edit_form(request):
-    if request.method == 'POST':
-        form = YourForm(request.POST, request.FILES)
-        if form.is_valid():
-            instance = form.save()
-            # Дополнительные действия после сохранения формы
-    else:
-        form = YourForm()
+def edit_form(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
     
-    return render(request, 'edit_form.html', {'form': form})
+    if request.method == 'POST':
+        # Обработка данных из формы
+        form = YourForm(request.POST, request.FILES, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Перенаправление после успешного обновления
+    else:
+        # Отображение формы для редактирования
+        form = YourForm(instance=task)
+    
+    return render(request, 'main/edit_form.html', {'task': task, 'form': form})

@@ -1,5 +1,23 @@
-<form method="post" enctype="multipart/form-data">
+{% extends 'main/index.html' %}
+
+{% block title %}
+  Редактирование изображения - {{task.title}}
+{% endblock %}
+
+{% block content %}
+  <h2>Редактирование изображения - {{task.title}}</h2>
+
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Сохранить</button>
-</form>
+    
+    <!-- Поле для загрузки нового изображения -->
+    <label for="id_image">Новое изображение:</label>
+    <input type="file" name="image" id="id_image">
+    
+    <br>
+    
+    <!-- Кнопка для отправки формы -->
+    <button type="submit">Сохранить изменения</button>
+  </form>
+
+{% endblock %}
