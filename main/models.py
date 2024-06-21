@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils.html import mark_safe
+from simple_history.models import HistoricalRecords
+
+
 
 class Task(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
@@ -113,26 +116,16 @@ class Master(models.Model):
 #------------------------------------------------
 
 class Contacts(models.Model):
-    title = models.CharField('Название', max_length=50)
-    image = models.ImageField(upload_to='images/', null=True, blank=True,verbose_name='Фотография')
-    task = models.TextField('Описание')
-    short_task = models.TextField(max_length=255, verbose_name="Краткое описание")
+    title = models.CharField(max_length=100)
+    short_task = models.CharField(max_length=200)
+    task = models.TextField()
+    image = models.ImageField(upload_to='images/')
     
-    def image_preview (self):
-        if self.image:
-            return mark_safe('<img src="%s" width="300" height="300" />' % self.image.url)
-        else:
-            return 'Изображения нет'
-    image_preview.short_description = 'Превью фотографиии'
-    image_preview.allow_tags = True
+    
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.title
-    
-
-    class Meta:
-        verbose_name = 'Контакты'
-        verbose_name_plural = 'Контакты'
 
 #------------------------------------------------
 
@@ -162,3 +155,5 @@ class Graduation(models.Model):
     class Meta:
         verbose_name = 'Выпускные'
         verbose_name_plural = 'Выпускные'
+    
+

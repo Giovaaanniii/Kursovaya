@@ -9,22 +9,48 @@
 <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
 
 <h1 class="heading">Акции</h1>  
-
   {% if tasks %}
-    {% for el in tasks %}
-      <div class="wrapper">
-        <div class="card">
-          <div class="card-title">{{ el.title }}</div>
-          <img src="{% static el.image %}" class="card-img" alt="Фотография">
-          <div class="card-discription">{{ el.task }}</div>
-          <div class="card-cena">{{ el.cena }}</div>
-          <div class="btn-keeper">
-            <a class="btn open-popup" href="#">Забронировать</a>
-            <a class="btn" href="{% url 'edit_form' el.id %}">Редактировать изображение</a>
-          </div>
-        </div> 
+   
+    
+      {% for el in page_obj %}
+      
+        <div class="wrapper">
+          <div class="card">
+            <div class="card-title">{{ el.title }}</div>
+            <img src="{% static el.image %}" class="card-img" alt="Фотография">
+            <div class="card-discription">{{ el.task }}</div>
+            <div class="card-cena">{{ el.cena }}</div>
+            <div class="btn-keeper">
+              <a class="btn open-popup" href="#">Забронировать</a>
+              <br/>
+              <br/>
+              <a class="btn" href="{% url 'edit_form' el.id %}">Редактировать изображение</a>
+            </div>
+          </div> 
+        </div>
+      {% endfor %}
+      {% if page_obj.has_other_pages %}
+      <div class="pagination_button">
+        {% if page_obj.has_previous %}
+          <a class = 'pagination' href="?page=1">&laquo; Первая</a>
+          <a class = 'pagination' href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        {% endif %}
+        
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <span class="current">{{ num }}</span>
+          {% else %}
+            <a class = 'pagination' href="?page={{ num }}">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+    
+        {% if page_obj.has_next %}
+          <a class = 'pagination' href="?page={{ page_obj.next_page_number }}">Следующая</a>
+          <a class = 'pagination' href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+        {% endif %}
       </div>
-    {% endfor %}
+    {% endif %}
+    
   {% else %}
     <p>Сейчас нет записей</p>
   {% endif %}

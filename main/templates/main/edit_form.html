@@ -11,13 +11,16 @@
 {% block content %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'main/css/home.css' %}">
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <!-- Кнопка для отправки формы -->
-    <button type="submit">Сохранить изменения</button>
-  </form>
+<div class="edit">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        {{ form.as_p }}
+    
+        <!-- Кнопка для отправки формы -->
+        <button type="submit">Сохранить изменения</button>
+      </form>
+  
+</div>
  
 {% endblock %}

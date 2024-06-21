@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'main',
-    'debug_toolbar'
+    'debug_toolbar',
+    'rest_framework',
+    'django_filters',
+    'simple_history',
+    'import_export',
+    'django.contrib.staticfiles', #Необходим для swagger ui's css/js файлов
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +88,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -127,6 +134,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+       'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+       'PAGE_SIZE': 5,
+   }
 
 INTERNAL_IPS = [
     '127.0.0.1',
