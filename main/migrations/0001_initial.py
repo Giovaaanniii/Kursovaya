@@ -16,120 +16,267 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Contacts',
+            name="Contacts",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('short_task', models.CharField(max_length=200)),
-                ('task', models.TextField()),
-                ('image', models.ImageField(upload_to='images/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("short_task", models.CharField(max_length=200)),
+                ("task", models.TextField()),
+                ("image", models.ImageField(upload_to="images/")),
             ],
         ),
         migrations.CreateModel(
-            name='Events',
+            name="Events",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('image', models.ImageField(upload_to='images/', verbose_name='Фотография')),
-                ('task', models.TextField(blank=True, verbose_name='Описание')),
-                ('short_task', models.TextField(max_length=255, verbose_name='Краткое описание')),
-                ('cena', models.CharField(max_length=255, verbose_name='Cтоимость')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
-                ('time_update', models.DateTimeField(auto_now=True, verbose_name='Время изменения')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "image",
+                    models.ImageField(upload_to="images/", verbose_name="Фотография"),
+                ),
+                ("task", models.TextField(blank=True, verbose_name="Описание")),
+                (
+                    "short_task",
+                    models.TextField(max_length=255, verbose_name="Краткое описание"),
+                ),
+                ("cena", models.CharField(max_length=255, verbose_name="Cтоимость")),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время создания"
+                    ),
+                ),
+                (
+                    "time_update",
+                    models.DateTimeField(auto_now=True, verbose_name="Время изменения"),
+                ),
             ],
             options={
-                'verbose_name': 'Мероприятия',
-                'verbose_name_plural': 'Мероприятия',
+                "verbose_name": "Мероприятия",
+                "verbose_name_plural": "Мероприятия",
             },
         ),
         migrations.CreateModel(
-            name='Excursions',
+            name="Excursions",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('image', models.ImageField(upload_to='images/', verbose_name='Фотография')),
-                ('task', models.TextField(blank=True, verbose_name='Описание')),
-                ('short_task', models.TextField(max_length=255, verbose_name='Краткое описание')),
-                ('cena', models.CharField(max_length=255, verbose_name='Cтоимость')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
-                ('time_update', models.DateTimeField(auto_now=True, verbose_name='Время изменения')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "image",
+                    models.ImageField(upload_to="images/", verbose_name="Фотография"),
+                ),
+                ("task", models.TextField(blank=True, verbose_name="Описание")),
+                (
+                    "short_task",
+                    models.TextField(max_length=255, verbose_name="Краткое описание"),
+                ),
+                ("cena", models.CharField(max_length=255, verbose_name="Cтоимость")),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время создания"
+                    ),
+                ),
+                (
+                    "time_update",
+                    models.DateTimeField(auto_now=True, verbose_name="Время изменения"),
+                ),
             ],
             options={
-                'verbose_name': 'Экскурсии',
-                'verbose_name_plural': 'Экскурсии',
+                "verbose_name": "Экскурсии",
+                "verbose_name_plural": "Экскурсии",
             },
         ),
         migrations.CreateModel(
-            name='Graduation',
+            name="Graduation",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='images/', verbose_name='Фотография')),
-                ('task', models.TextField(blank=True, verbose_name='Описание')),
-                ('short_task', models.TextField(max_length=255, verbose_name='Краткое описание')),
-                ('cena', models.CharField(max_length=255, verbose_name='Cтоимость')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
-                ('time_update', models.DateTimeField(auto_now=True, verbose_name='Время изменения')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="images/",
+                        verbose_name="Фотография",
+                    ),
+                ),
+                ("task", models.TextField(blank=True, verbose_name="Описание")),
+                (
+                    "short_task",
+                    models.TextField(max_length=255, verbose_name="Краткое описание"),
+                ),
+                ("cena", models.CharField(max_length=255, verbose_name="Cтоимость")),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время создания"
+                    ),
+                ),
+                (
+                    "time_update",
+                    models.DateTimeField(auto_now=True, verbose_name="Время изменения"),
+                ),
             ],
             options={
-                'verbose_name': 'Выпускные',
-                'verbose_name_plural': 'Выпускные',
+                "verbose_name": "Выпускные",
+                "verbose_name_plural": "Выпускные",
             },
         ),
         migrations.CreateModel(
-            name='Master',
+            name="Master",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('image', models.ImageField(upload_to='images/', verbose_name='Фотография')),
-                ('task', models.TextField(blank=True, verbose_name='Описание')),
-                ('short_task', models.TextField(max_length=255, verbose_name='Краткое описание')),
-                ('cena', models.CharField(max_length=255, verbose_name='Cтоимость')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
-                ('time_update', models.DateTimeField(auto_now=True, verbose_name='Время изменения')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "image",
+                    models.ImageField(upload_to="images/", verbose_name="Фотография"),
+                ),
+                ("task", models.TextField(blank=True, verbose_name="Описание")),
+                (
+                    "short_task",
+                    models.TextField(max_length=255, verbose_name="Краткое описание"),
+                ),
+                ("cena", models.CharField(max_length=255, verbose_name="Cтоимость")),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время создания"
+                    ),
+                ),
+                (
+                    "time_update",
+                    models.DateTimeField(auto_now=True, verbose_name="Время изменения"),
+                ),
             ],
             options={
-                'verbose_name': 'Мастер-классы',
-                'verbose_name_plural': 'Мастер-классы',
+                "verbose_name": "Мастер-классы",
+                "verbose_name_plural": "Мастер-классы",
             },
         ),
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Заголовок')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='images/', verbose_name='Фотография')),
-                ('task', models.TextField(blank=True, verbose_name='Описание')),
-                ('short_task', models.TextField(max_length=255, verbose_name='Краткое описание')),
-                ('cena', models.CharField(max_length=255, verbose_name='Cтоимость')),
-                ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Время создания')),
-                ('time_update', models.DateTimeField(auto_now=True, verbose_name='Время изменения')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255, verbose_name="Заголовок")),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="images/",
+                        verbose_name="Фотография",
+                    ),
+                ),
+                ("task", models.TextField(blank=True, verbose_name="Описание")),
+                (
+                    "short_task",
+                    models.TextField(max_length=255, verbose_name="Краткое описание"),
+                ),
+                ("cena", models.CharField(max_length=255, verbose_name="Cтоимость")),
+                (
+                    "time_create",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Время создания"
+                    ),
+                ),
+                (
+                    "time_update",
+                    models.DateTimeField(auto_now=True, verbose_name="Время изменения"),
+                ),
             ],
             options={
-                'verbose_name': 'Задача',
-                'verbose_name_plural': 'Главная',
-                'ordering': ['-time_create'],
+                "verbose_name": "Задача",
+                "verbose_name_plural": "Главная",
+                "ordering": ["-time_create"],
             },
         ),
         migrations.CreateModel(
-            name='HistoricalContacts',
+            name="HistoricalContacts",
             fields=[
-                ('id', models.BigIntegerField(auto_created=True, blank=True, db_index=True, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('short_task', models.CharField(max_length=200)),
-                ('task', models.TextField()),
-                ('image', models.TextField(max_length=100)),
-                ('history_id', models.AutoField(primary_key=True, serialize=False)),
-                ('history_date', models.DateTimeField(db_index=True)),
-                ('history_change_reason', models.CharField(max_length=100, null=True)),
-                ('history_type', models.CharField(choices=[('+', 'Created'), ('~', 'Changed'), ('-', 'Deleted')], max_length=1)),
-                ('history_user', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigIntegerField(
+                        auto_created=True, blank=True, db_index=True, verbose_name="ID"
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                ("short_task", models.CharField(max_length=200)),
+                ("task", models.TextField()),
+                ("image", models.TextField(max_length=100)),
+                ("history_id", models.AutoField(primary_key=True, serialize=False)),
+                ("history_date", models.DateTimeField(db_index=True)),
+                ("history_change_reason", models.CharField(max_length=100, null=True)),
+                (
+                    "history_type",
+                    models.CharField(
+                        choices=[("+", "Created"), ("~", "Changed"), ("-", "Deleted")],
+                        max_length=1,
+                    ),
+                ),
+                (
+                    "history_user",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name="+",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'historical contacts',
-                'verbose_name_plural': 'historical contactss',
-                'ordering': ('-history_date', '-history_id'),
-                'get_latest_by': ('history_date', 'history_id'),
+                "verbose_name": "historical contacts",
+                "verbose_name_plural": "historical contactss",
+                "ordering": ("-history_date", "-history_id"),
+                "get_latest_by": ("history_date", "history_id"),
             },
             bases=(simple_history.models.HistoricalChanges, models.Model),
         ),

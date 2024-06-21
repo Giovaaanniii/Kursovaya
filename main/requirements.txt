@@ -1,0 +1,4 @@
+    Django==4.2.7
+    django_import_export==3.3.7
+    django_simple_history==3.5.0
+    djangorestframework==3.14.0
