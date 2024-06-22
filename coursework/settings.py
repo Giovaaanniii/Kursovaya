@@ -164,15 +164,15 @@ EMAIL_PORT = 1025
 CELERY_BROKER_URL = 'amqp://localhost'
 CELERY_RESULT_BACKEND = 'amqp'
 
-CACHES = {
-     'default': {
-         'BACKEND': 'django_redis.cache.RedisCache',
-         'LOCATION': 'redis://127.0.0.1:6379/1',  # Адрес вашего Redis сервера
-         'OPTIONS': {
-             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-         },
-         "KEY_PREFIX": "example"
-     }
-}
+# CACHES = {
+#      'default': {
+#          'BACKEND': 'django_redis.cache.RedisCache',
+#          'LOCATION': 'redis://127.0.0.1:6379/1',  # Адрес вашего Redis сервера
+#          'OPTIONS': {
+#              'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+#          },
+#          "KEY_PREFIX": "example"
+#      }
+# }
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'
