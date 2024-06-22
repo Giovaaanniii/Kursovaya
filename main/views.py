@@ -8,7 +8,7 @@ from .models import Master
 from .models import Contacts
 from .models import Graduation
 from .forms import YourForm
-
+from django.core.cache import cache
 # from rest_framework.generics import ListAPIView
 from .serializers import TaskSerializer, ExcursionsSerializer
 
@@ -32,6 +32,8 @@ def home(request):
         "main/home.html",
         {"page_obj": page_obj, "title": "Главная страница", "tasks": tasks_home},
     )
+
+
 
 
 class ExcursionsFilter(filters.BaseFilterBackend):

@@ -12,8 +12,25 @@ services:
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
   #  depends_on:
   #    - redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
   mailhog:
     build: ./_docker/mailhog
     ports:
       - 1338:8025
       - 1001:1025
+  celery:
+    build: ./_docker/celery
+    command: celery -A core worker -l info
+    volumes:
+    - ./_docker/celery/:/usr/src/app/
+
+    environment:
+    - DEBUG=1
+    - SECRET_KEY=dbaa1_i7%*3r9-=z-+_mz4r-!qeed@(-a_r(g@k8jo8y3r27%m
+    - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+    depends_on:
+    - redis
+    
