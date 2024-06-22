@@ -25,9 +25,9 @@ schema_view = get_schema_view(
 )
 urlpatterns = [
  path('admin/', admin.site.urls),
-    path('',include('main.urls')),
-    path('__debug__/',include(debug_toolbar.urls)),
-    
+ path('',include('main.urls')),
+ path('__debug__/',include(debug_toolbar.urls)),
+ path('login/s/', include('social_django.urls')),
 path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),
 name='schema-swagger-ui'),
  

@@ -12,3 +12,8 @@ services:
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
   #  depends_on:
   #    - redis
+  mailhog:
+    build: ./_docker/mailhog
+    ports:
+      - 1338:8025
+      - 1001:1025
