@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.vk.VKOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -81,13 +81,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = 51956693
-SOCIAL_AUTH_VK_OAUTH2_SECRET = 'g7EK9UnoQ98GbHLOJiIf'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['GOOGLE_OAUTH_CLIENT_ID']
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['GOOGLE_OAUTH_CLIENT_SECRET']
 
 WSGI_APPLICATION = 'coursework.wsgi.application'
 
