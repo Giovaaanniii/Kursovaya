@@ -13,6 +13,7 @@ RUN pip install -r requirements.txt
 RUN pip install django-redis
 
 
+
 COPY . /usr/src/app/
 
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
