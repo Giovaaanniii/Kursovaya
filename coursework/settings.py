@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from celery.schedules import crontab
+from celery.schedules import schedule
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'social_django',
     'users',
+    'django_celery_beat',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -64,7 +67,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'main.middleware.logging.LoggingMiddleware'
 ]
 
 ROOT_URLCONF = 'coursework.urls'
@@ -161,18 +165,39 @@ INTERNAL_IPS = [
 EMAIL_HOST = 'mailhog'
 EMAIL_PORT = 1025
 
-CELERY_BROKER_URL = 'amqp://localhost'
-CELERY_RESULT_BACKEND = 'amqp'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
 
-# CACHES = {
-#      'default': {
-#          'BACKEND': 'django_redis.cache.RedisCache',
-#          'LOCATION': 'redis://127.0.0.1:6379/1',  # Адрес вашего Redis сервера
-#          'OPTIONS': {
-#              'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#          },
-#          "KEY_PREFIX": "example"
-#      }
-# }
+CELERY_BEAT_SCHEDULE = {
+    'save-logs': {
+        'task': 'main.tasks.save_logs_to_db',
+        'schedule': crontab()
+    },
+    'send_emails': {
+        'task': 'main.tasks.send_mail_excursions',
+        'schedule': crontab(),
+    }
+}
+
+EXCLUDED_URLS_FROM_LOGGING = [
+    r'^/admin/',
+    r'^/static/',
+]
+
+
+CACHES = {
+     'default': {
+         'BACKEND': 'django_redis.cache.RedisCache',
+         'LOCATION': 'redis://redis:6379/1',
+         'OPTIONS': {
+             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+         },
+     }
+}
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'

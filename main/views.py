@@ -20,11 +20,12 @@ from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django.core.mail import send_mail
-
+from main.tasks import send_mail_hello
 
 def home(request):
-    send_mail('subject', 'message', 'to@example.com', ['from@example.com'])
+    if (request.user.is_authenticated):
+        send_mail_hello.delay(request.user.email, 'Привет. Спасибо, что зашли на наш сайт!')
+
     tasks_home = Task.objects.all()
     paginator = Paginator(tasks_home, 3)
     page_number = request.GET.get("page")
